@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit <%= planet.name %></title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Edit <%= planet.name %></h1>
+
+  <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=PUT" method="POST">
+    <label for="name">Planet Name:</label>
+    <input type="text" name="name" id="name" value="<%= planet.name %>" required>
+
+    <label for="planetDescription">Description:</label>
+    <textarea name="planetDescription" id="planetDescription" required><%= planet.planetDescription %></textarea>
+
+    <button type="submit">Update Planet</button>
+  </form>
+
+  <a href="/users/<%= user._id %>/planets/<%= planet._id %>">Cancel</a>
+</body>
+</html>

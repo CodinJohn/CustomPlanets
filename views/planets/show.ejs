@@ -7,8 +7,11 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1><%= planet.name %></h1>
-  <p><%= planet.planetDescription %></p>
-  <a href="/users/<%= user._id %>/planets">Back to Your Planets</a>
+  <h1><%= planet.name %> Details</h1>
+
+  <p>Description: <%= planet.planetDescription %></p>
+
+  <a href="/users/<%= user._id %>/planets/<%= planet._id %>/edit">Edit this planet</a>
+  <a href="/users/<%= user._id %>/planets">Back to Planets List</a>
 </body>
 </html>
