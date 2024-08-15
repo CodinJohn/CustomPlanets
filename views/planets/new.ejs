@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Planet</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Create a New Planet</h1>
+  <form action="/users/<%= user._id %>/planets" method="POST">
+    <label for="name">Planet Name:</label>
+    <input type="text" name="name" id="name" required />
+    <label for="planetDescription">Description:</label>
+    <textarea name="planetDescription" id="planetDescription" required></textarea>
+    <button type="submit">Create Planet</button>
+  </form>
+  <a href="/users/<%= user._id %>/planets">Back to Planets</a>
+</body>
+</html>
