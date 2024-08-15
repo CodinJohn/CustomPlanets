@@ -2,9 +2,6 @@ const express = require('express')
 const router = express.Router();
 const Planet = require('../models/planet.js')
 
-router.get('/new', (req, res) => {
-    res.render('planets/new.ejs')
-});
 
 router.post('/', async (req, res) => {
     try {
@@ -20,6 +17,10 @@ router.post('/', async (req, res) => {
         console.error(error)
         res.redirect('/')
     }
+});
+
+router.get('/new', (req, res) => {
+    res.render('planets/new.ejs')
 });
 
 router.get('/', async (req, res) => {
@@ -48,9 +49,30 @@ router.get('/:planetId/edit', async (req, res) => {
         if(!planet) {
             return res.redirect(`/users/${req.session.user._id}/planets`)
         }
-        res.render('planet/edit.ejs', { planet })
+        res.render('planets/edit.ejs', { planet })
     } catch (error) {
         console.error('Error grabbing planet for edit:', error)
+        res.redirect(`/users/${req.session.user._id}/planets`)
+    }
+});
+
+router.put('/:planetId', async (req, res) => {
+    try {
+        const { name, planetDescription} = req.body
+        await Planet.findByIdAndUpdate(req.params.planetId, { name, planetDescription})
+        res.redirect(`/users/${req.session.user._id}/planets`)
+    } catch (error) {
+        console.error('Error updating planet:', error)
+        res.redirect(`/users/${req.session.user._id}/planets`)
+    }
+});
+
+router.delete('/:planetId', async (req, res) => {
+    try {
+        await Planet.findByIdAndDelete(req.params.planetId)
+        res.redirect(`/users/${req.session.user._id}/planets`)
+    } catch (error) {
+        console.error('Error deleting planet:', error)
         res.redirect(`/users/${req.session.user._id}/planets`)
     }
 });
