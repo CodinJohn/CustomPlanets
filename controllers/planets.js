@@ -42,4 +42,17 @@ router.get('/:planetId', async (req, res) => {
     }
 });
 
+router.get('/:planetId/edit', async (req, res) => {
+    try {
+        const planet = await Planet.findById(req.params.planetId)
+        if(!planet) {
+            return res.redirect(`/users/${req.session.user._id}/planets`)
+        }
+        res.render('planet/edit.ejs', { planet })
+    } catch (error) {
+        console.error('Error grabbing planet for edit:', error)
+        res.redirect(`/users/${req.session.user._id}/planets`)
+    }
+});
+
 module.exports = router;
