@@ -5,30 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/CSS/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <title>Your Custom Planets</title>
 </head>
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
-    <h1>Your Custom Planets</h1>
+    <nav2>
+      <h1>Your Custom Planets</h1>
 
-    <ul>
-      <% planets.forEach(planet=> { %>
-        <li>
-          <a href="/users/<%= user._id %>/planets/<%= planet._id %>">
-            <%= planet.name %>
-          </a>
-          <a href="/users/<%= user._id %>/planets/<%= planet._id %>/edit">Edit</a>
-          <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=DELETE" method="POST"
-            style="display:inline;">
-            <button type="submit">Delete</button>
-          </form>
-        </li>
-        <% }); %>
-    </ul>
+      <ul class="planet-list">
+        <% planets.forEach(planet=> { %>
+          <li>
+            <i class="fas fa-globe" style="margin-right: 5px;"></i>
+            <a href="/users/<%= user._id %>/planets/<%= planet._id %>">
+              <%= planet.name %>
+            </a>
+            <form action="/users/<%= user._id %>/planets/<%= planet._id %>/edit" style="display:inline;">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=DELETE" method="POST"
+              style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+          <% }); %>
+      </ul>
 
-    <a href="/users/<%= user._id %>/planets/new">Create a new planet</a>
-    <a href="/">Back to Home</a>
+      <form action="/users/<%= user._id %>/planets/new" class="button">
+        <button type="submit">Create a new planet</button>
+      </form>
+
+      <form action="/">
+        <button type="submit">Back to home</button>
+      </form>
+
+    </nav2>
 </body>
 
 </html>

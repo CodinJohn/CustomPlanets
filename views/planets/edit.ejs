@@ -11,20 +11,27 @@
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit <%= planet.name %>
-    </h1>
 
-    <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=PUT" method="POST">
-      <label for="name">Planet Name:</label>
-      <input type="text" name="name" id="name" value="<%= planet.name %>" required>
+    <nav>
+      <h1>Edit <%= planet.name %>
+      </h1>
 
-      <label for="planetDescription">Description:</label>
-      <textarea name="planetDescription" id="planetDescription" required><%= planet.planetDescription %></textarea>
+      <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=PUT" method="POST">
+        <label for="name">Planet Name:</label>
+        <input type="text" name="name" id="name" value="<%= planet.name %>" required>
 
-      <button type="submit">Update Planet</button>
-    </form>
+        <label for="planetDescription">Description:</label>
+        <input type="text" name="planetDescription" id="planetDescription" value="<%= planet.planetDescription %>"
+          required>
 
-    <a href="/users/<%= user._id %>/planets/<%= planet._id %>">Cancel</a>
+        <button type="submit">Update Planet</button>
+      </form>
+
+      <from action="/users/<%= user._id %>/planets/<%= planet._id %>">
+        <button type="submit">Cancel</button>
+      </from>
+    </nav>
+
 </body>
 
 </html>

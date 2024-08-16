@@ -15,10 +15,13 @@
       <label for="name">Planet Name:</label>
       <input type="text" name="name" id="name" required />
       <label for="planetDescription">Description:</label>
-      <textarea name="planetDescription" id="planetDescription" required></textarea>
+      <input type="text" name="planetDescription" id="planetDescription" required />
       <button type="submit">Create Planet</button>
     </form>
-    <a href="/users/<%= user._id %>/planets">Back to Planets</a>
+    </form>
+    <form action="/users/<%= user._id %>/planets">
+      <button type="submit">Back to Planets</button>
+    </form>
 </body>
 
 </html>

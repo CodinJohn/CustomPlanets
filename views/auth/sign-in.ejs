@@ -9,19 +9,20 @@
 </head>
 
 <body>
-  <h1>Sign in</h1>
-  <form action="/auth/sign-in" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <button type="submit">Sign in</button>
-  </form>
+  <%- include('../partials/_navbar.ejs') %>
 
-  <p>Don't have an account?</p>
-  <form action="/auth/sign-up" method="get" style="display:inline;">
-    <button type="submit">Sign Up</button>
-  </form>
+    <h1>Sign in</h1>
+    <form action="/auth/sign-in" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <button class="button" type="submit">Sign in</button>
+    </form>
+    <p>Don't have an account?</p>
+    <form action="/auth/sign-up" class="button">
+      <button class="button" type="submit">Sign Up</button>
+
 </body>
 
 </html>
