@@ -1,13 +1,13 @@
 <nav>
-    <a href="/">Home</a>
-    <% if(user) { %>
-      <a href="/users/<%= user._id %>/planets">View my Custom Planets</a>
-      <a href="/auth/sign-out">Sign Out</a>
+  <a href="/">Home</a>
+  <% if(user) { %>
+    <a href="/users/<%= user._id %>/planets">View my Custom Planets</a>
+    <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
       <a href="/auth/sign-in">Sign In</a>
       <a href="/auth/sign-up">Sign Up</a>
-    <% } %>
-  </nav>
-  <nav>
-    <a href="/users">Explore Our Community</a>
-  </nav>
+      <% } %>
+</nav>
+<nav>
+  <a href="/users">Explore Our Community</a>
+</nav>

@@ -25,18 +25,18 @@ router.get('/new', (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-      const planets = await Planet.find({ owner: req.session.user._id });
-      res.render('planets/index.ejs', { planets });
+        const planets = await Planet.find({ owner: req.session.user._id });
+        res.render('planets/index.ejs', { planets });
     } catch (error) {
-      console.error(error);
-      res.redirect('/');
+        console.error(error);
+        res.redirect('/');
     }
-  });
+});
 
 router.get('/:planetId', async (req, res) => {
     try {
         const planet = await Planet.findById(req.params.planetId)
-        res.render('planets/show.ejs', {planet})
+        res.render('planets/show.ejs', { planet })
     } catch (error) {
         console.error(error)
         res.redirect(`/users/${req.session.user._id}/planets`)
@@ -46,7 +46,7 @@ router.get('/:planetId', async (req, res) => {
 router.get('/:planetId/edit', async (req, res) => {
     try {
         const planet = await Planet.findById(req.params.planetId)
-        if(!planet) {
+        if (!planet) {
             return res.redirect(`/users/${req.session.user._id}/planets`)
         }
         res.render('planets/edit.ejs', { planet })
@@ -58,8 +58,8 @@ router.get('/:planetId/edit', async (req, res) => {
 
 router.put('/:planetId', async (req, res) => {
     try {
-        const { name, planetDescription} = req.body
-        await Planet.findByIdAndUpdate(req.params.planetId, { name, planetDescription})
+        const { name, planetDescription } = req.body
+        await Planet.findByIdAndUpdate(req.params.planetId, { name, planetDescription })
         res.redirect(`/users/${req.session.user._id}/planets`)
     } catch (error) {
         console.error('Error updating planet:', error)

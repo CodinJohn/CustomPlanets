@@ -34,6 +34,7 @@ app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/users/:userId/planets',planetsController);
 app.use('/users', usersController);
+app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {

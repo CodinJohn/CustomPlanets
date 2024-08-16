@@ -1,19 +1,25 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
     <title>Community Planets</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Explore Other Planets that our Users have Created!</h1>
-    <ul>
-        <% users.forEach(user => { %>
-            <li>
-                <a href="/users/<%= user._id %>"><%= user.username %></a>
-            </li>
-        <% }) %>
-    </ul>
-    <a href="/">Back to Home</a>
+        <h1>Explore Other Planets that our Users have Created!</h1>
+        <ul>
+            <% users.forEach(user=> { %>
+                <li>
+                    <a href="/users/<%= user._id %>">
+                        <%= user.username %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+        <a href="/">Back to Home</a>
 </body>
+
 </html>

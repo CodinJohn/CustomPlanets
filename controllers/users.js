@@ -4,7 +4,7 @@ const User = require('../models/user.js');
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.find({}); 
+    const users = await User.find({});
     res.render('users/index.ejs', { users });
   } catch (error) {
     console.error(error);
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 router.get('/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
-    const user = await User.findById(userId); 
+    const user = await User.findById(userId);
 
     if (!user) {
       return res.redirect('/users');

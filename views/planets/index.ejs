@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/CSS/style.css">
   <title>Your Custom Planets</title>
 </head>
+
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1>Your Custom Planets</h1>
+    <h1>Your Custom Planets</h1>
 
-  <ul>
-    <% planets.forEach(planet => { %>
-      <li>
-        <a href="/users/<%= user._id %>/planets/<%= planet._id %>"><%= planet.name %></a>
-        <a href="/users/<%= user._id %>/planets/<%= planet._id %>/edit">Edit</a>
-        <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=DELETE" method="POST" style="display:inline;">
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-    <% }); %>
-  </ul>
+    <ul>
+      <% planets.forEach(planet=> { %>
+        <li>
+          <a href="/users/<%= user._id %>/planets/<%= planet._id %>">
+            <%= planet.name %>
+          </a>
+          <a href="/users/<%= user._id %>/planets/<%= planet._id %>/edit">Edit</a>
+          <form action="/users/<%= user._id %>/planets/<%= planet._id %>?_method=DELETE" method="POST"
+            style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+        <% }); %>
+    </ul>
 
-  <a href="/users/<%= user._id %>/planets/new">Create a new planet</a>
-  <a href="/">Back to Home</a>
+    <a href="/users/<%= user._id %>/planets/new">Create a new planet</a>
+    <a href="/">Back to Home</a>
 </body>
+
 </html>
